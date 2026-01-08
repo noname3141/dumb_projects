@@ -29,6 +29,10 @@ int main(void){
 	scanf("%d", &choice);
 
 	switch(choice){
+		case 0:
+			printf("give the name of contact to delete");
+			scanf("%s", name);
+			printf("Underwork!");
 		case 1:
 			if (numContacts < MAX_CONSIZE){
 				contact newcon;
@@ -48,16 +52,27 @@ int main(void){
 				if(dce == 1){
 					contacts[numContacts] = newcon;
 					numContacts++;
-					printf("added");
+					printf("added\n");
 				}
 			}
 			else{
 				printf("Contact limit reached");
 			}
+		case 2:
+			int i = 0;
+			for(i=0;i<numContacts;i++){
+				printf("Name: %s\n", contacts[i].name);
+				printf("Mobile no: +91 %s\n", contacts[i].num);
+				printf("Email: %s\n", contacts[i].email);
+				printf("\n");
+			}
+		case 3:
+			printf("Exiting");
+			return 0;
 		case 4:
 			printf("Name of contact:");
 			scanf("%s", name);
-			int i = 0;
+			i = 0;
 			for(i=0;i<numContacts;i++){
 				if(contacts[i].name == name){
 					int update;
@@ -80,21 +95,6 @@ int main(void){
 					}
 				}
 			}
-		case 3:
-			printf("Exiting");
-			return 0;
-		case 2:
-			i = 0;
-			for(i=0;i<numContacts;i++){
-				printf("Name: %s\n", contacts[i].name);
-				printf("Mobile no: +91 %s\n", contacts[i].num);
-				printf("Email: %s\n", contacts[i].email);
-				printf("\n");
-			}
-		case 0:
-			printf("give the name of contact to delete");
-			scanf("%s", name);
-			printf("Underwork!");
 		default:
 			printf("Invalid choice");
 		}
