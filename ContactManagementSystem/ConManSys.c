@@ -21,6 +21,7 @@ int main(void){
 	char name[50];
 
 	while(1){
+    printf("Currntly saved: %d\n", numContacts);
 	printf("1:save new contact\n");
 	printf("2:show contacts\n");
 	printf("3:Exit\n");
@@ -33,6 +34,7 @@ int main(void){
 			printf("give the name of contact to delete");
 			scanf("%s", name);
 			printf("Underwork!");
+            break;
 		case 1:
 			if (numContacts < MAX_CONSIZE){
 				contact newcon;
@@ -58,6 +60,7 @@ int main(void){
 			else{
 				printf("Contact limit reached");
 			}
+            break;
 		case 2:
 			int i = 0;
 			for(i=0;i<numContacts;i++){
@@ -66,15 +69,16 @@ int main(void){
 				printf("Email: %s\n", contacts[i].email);
 				printf("\n");
 			}
+            break;
 		case 3:
-			printf("Exiting");
+			printf("Exiting\n");
 			return 0;
 		case 4:
 			printf("Name of contact:");
 			scanf("%s", name);
 			i = 0;
 			for(i=0;i<numContacts;i++){
-				if(contacts[i].name == name){
+				if(strcmp(contacts[i].name, name) == 0){
 					int update;
 					printf("Enter 1 for changing name");
 					printf("Enter 2 for changing Mob no.");
@@ -84,19 +88,25 @@ int main(void){
 						case 1:
 							printf("Enter new name:");
 							scanf("%s", contacts[i].name);
+                            break;
 						case 2:
 							printf("Enter new Mob no.:");
 							scanf("%s", contacts[i].num);
+                            break;
 						case 3:
 							printf("Enter new email:");
 							scanf("%s", contacts[i].email);
+                            break;
 						default:
 							printf("Enter valid field");
+                            break;
 					}
 				}
 			}
+            break;
 		default:
 			printf("Invalid choice");
+            break;
 		}
 	}
 	return -1;
