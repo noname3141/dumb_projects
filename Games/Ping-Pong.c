@@ -84,14 +84,14 @@ int main(){
     Pad2.w = 25;
     Pad2.x = width - (Pad1.w + 10);
     Pad2.y = height/2 - Pad1.h/2;
-    Pad2.speed = 8;
+    Pad2.speed = 10;
 
     InitWindow(width, height, "My Pong game");
     SetTargetFPS(60);
     
     while(WindowShouldClose() == false){
-        ClearBackground(BLACK);
         BeginDrawing();
+        ClearBackground(BLACK);
         
         DrawPaddle(&Pad1);
         DrawPaddle(&Pad2);
@@ -106,9 +106,13 @@ int main(){
             ball.speed_x = -ball.speed_x;
             if(ball.x < GetScreenWidth()/2){
                 CPU += 1;
+                ball.x = GetScreenWidth()/2;
+                ball.y = GetScreenHeight()/2;
             }
             else{
                 Player += 1;
+                ball.x = GetScreenWidth()/2;
+                ball.y = GetScreenHeight()/2;
             }
         }
         DrawText(TextFormat("AI: %d", CPU), GetScreenWidth()/2 + 30, 20, 30, WHITE);
