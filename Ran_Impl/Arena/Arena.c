@@ -169,7 +169,7 @@ int arena_mark(Arena* arena){
 void arena_release(Arena* arena,int mark){
     arena->offset = mark;
 }
-
+/*
 int main(){
     Arena arena;
     arena_init(&arena);
@@ -184,3 +184,4 @@ int main(){
     arena_free(&arena);
     return c;
 }
+*/

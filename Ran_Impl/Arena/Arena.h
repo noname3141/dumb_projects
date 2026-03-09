@@ -13,7 +13,7 @@ typedef struct {
 void arena_init(Arena* arena);
 
 // Free internal memory (safe for stack-allocated arenas)
-void arena_free_memory(Arena* arena);
+void arena_free(Arena* arena);
 
 // Reset offset to reuse memory
 void arena_reset(Arena* arena);
