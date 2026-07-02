@@ -84,7 +84,7 @@ int main(){
     Pad2.w = 25;
     Pad2.x = width - (Pad1.w + 10);
     Pad2.y = height/2 - Pad1.h/2;
-    Pad2.speed = 7;
+    Pad2.speed = 10;
 
     InitWindow(width, height, "My Pong game");
     SetTargetFPS(60);
@@ -92,7 +92,28 @@ int main(){
     while(WindowShouldClose() == false){
         BeginDrawing();
         ClearBackground(BLACK);
-        
+        if(CPU >= 5){
+            DrawText(TextFormat("AI WON"), GetScreenWidth()/2 + 30, 20, 30, WHITE);
+            for(int i = 0; i < 100; i++){
+                ClearBackground(BLACK);
+                if(IsKeyPressed(KEY_SPACE)){
+                    CPU = 0;
+                    Player = 0;
+                    break;
+                }
+            }
+        }
+        else if(Player >= 5){
+            DrawText(TextFormat("Player WON"), GetScreenWidth()/2 + 30, 20, 30, WHITE);
+            for(int i = 0; i < 100; i++){
+                ClearBackground(BLACK);
+                if(IsKeyPressed(KEY_SPACE)){
+                    CPU = 0;
+                    Player = 0;
+                    break;
+                }
+            }
+        }
         DrawPaddle(&Pad1);
         DrawPaddle(&Pad2);
         DrawLine(width/2, 0, width/2, height, GRAY);
